@@ -8,7 +8,7 @@ export default function Home() {
   const [videoId, setVideoId] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const moodQueries = {
+  const moodQueries: { [key: string]: string | null } = {
     Hangry: "angry rock music",
     Wanderlust: "travel adventure music",
     Ennui: "lofi chill beats",
@@ -36,7 +36,7 @@ export default function Home() {
     "Inbox Zero Euphoria": "victory celebration music",
   };
 
-  const getMoodImage = (mood) => {
+  const getMoodImage = (mood: string) => {
     switch (mood) {
       case "Hangry":
         return "/hangry.webp";
@@ -93,12 +93,12 @@ export default function Home() {
     }
   };
 
-  const fetchRandomPlaylist = async (mood) => {
+  const fetchRandomPlaylist = async (mood: string) => {
     setLoading(true);
     try {
       const response = await fetch(
         `/api/youtube?mood=${encodeURIComponent(
-          moodQueries[mood]
+          moodQueries[mood] as string
         )}&type=playlist`
       );
       const data = await response.json();
@@ -127,8 +127,8 @@ export default function Home() {
     setLoading(false);
   };
 
-  const handleMoodSelect = (mood) => {
-    setSelectedMood(mood);
+  const handleMoodSelect = (mood: string) => {
+    setSelectedMood(mood as any);
     fetchRandomPlaylist(mood);
   };
 
@@ -173,7 +173,9 @@ export default function Home() {
               Here's your mood: {selectedMood}
             </h2>
             {loading ? (
-              <p>Loading...</p>
+              <p className=" font-semibold text-gray-700 text-center">
+                Loading...
+              </p>
             ) : (
               <>
                 {playlistId && !videoId && (
