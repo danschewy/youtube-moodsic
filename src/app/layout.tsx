@@ -34,6 +34,7 @@ export default function RootLayout({
       >
         {children}
       </body>
+      <meta name="google-adsense-account" content="ca-pub-3998650725257627" />
     </html>
   );
 }
