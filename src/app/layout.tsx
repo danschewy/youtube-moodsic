@@ -11,6 +11,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// @ts-ignore
 const lobsterFont = Lobster({
   variable: "--font-lobster",
   subsets: ["latin"],
