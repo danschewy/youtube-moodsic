@@ -1,4 +1,4 @@
-export async function GET(req) {
+export async function GET(req: { url: string | URL }) {
   const { searchParams } = new URL(req.url);
   const mood = searchParams.get("mood");
   const type = searchParams.get("type");
@@ -9,7 +9,7 @@ export async function GET(req) {
     if (type === "playlist") {
       const response = await fetch(
         `https://www.googleapis.com/youtube/v3/search?part=snippet&type=playlist&q=${encodeURIComponent(
-          mood
+          mood ?? ""
         )}&maxResults=10&key=${API_KEY}`
       );
       const data = await response.json();
@@ -41,7 +41,7 @@ export async function GET(req) {
         status: 400,
       });
     }
-  } catch (error) {
+  } catch (_) {
     return new Response(JSON.stringify({ error: "Internal server error" }), {
       status: 500,
     });

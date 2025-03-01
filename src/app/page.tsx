@@ -169,8 +169,11 @@ export default function Home() {
           </>
         ) : (
           <>
-            <h2 className="md:text-lg font-semibold text-gray-700 text-center">
-              Here's your mood: {selectedMood}
+            <h2 className="md:text-lg font-semibold text-gray-700 text-center mt-2">
+              Here's your mood:{" "}
+              <span className="text-xl font-bold bg-gradient-to-r from-white via-green-300 to-white text-transparent bg-clip-text bg-300% animate-gradient">
+                {selectedMood}
+              </span>
             </h2>
             {loading ? (
               <p className=" font-semibold text-gray-700 text-center">
