@@ -35,7 +35,7 @@ export default function RootLayout({
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3998650725257627"
           crossOrigin="anonymous"
-        ></script>{" "}
+        ></script>
       </Head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased animate-gradient bg-gradient-to-br from-rose-300 from-[27%] via-sky-500 via-[60%] to-indigo-500 to-[90%]`}
